@@ -1,7 +1,7 @@
 {
-    "name": "prezly/draft-php",
+    "name": "ermilov/draft-php",
     "type": "library",
-    "description": "PHP implementation of Draft.js ContentState model to allow server-side handling of Draft.js produced content.",
+    "description": "PHP implementation of Draft.js ContentState model to allow server-side handling of Draft.js produced content. PHP 5.6 downgraded version",
     "license": "MIT",
     "authors": [
         {
@@ -11,7 +11,7 @@
     ],
     "require": {
         "ext-mbstring": "*",
-        "php": "^7.0"
+        "php": "^5.6"
     },
     "require-dev": {
         "phpunit/phpunit": "~5.6",
