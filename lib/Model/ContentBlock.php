@@ -27,7 +27,7 @@ class ContentBlock
     /** @var array */
     private $_data = [];
 
-    public function __construct(string $key, string $type, string $text, array $characterList, int $depth, array $data = [])
+    public function __construct($key, $type, $text, array $characterList, $depth, array $data = [])
     {
         foreach ($characterList as $char) {
             if (! $char instanceof CharacterMetadata) {
@@ -47,17 +47,17 @@ class ContentBlock
         $this->_data = $data;
     }
 
-    public function getKey() : string
+    public function getKey()
     {
         return $this->_key;
     }
 
-    public function getType() : string
+    public function getType()
     {
         return $this->_type;
     }
 
-    public function getText() : string
+    public function getText()
     {
         return $this->_text;
     }
@@ -65,22 +65,22 @@ class ContentBlock
     /**
      * @return CharacterMetadata[]
      */
-    public function getCharacterList() : array
+    public function getCharacterList()
     {
         return $this->_characterList;
     }
 
-    public function getLength() : int
+    public function getLength()
     {
         return mb_strlen($this->_text);
     }
 
-    public function getDepth() : int
+    public function getDepth()
     {
         return $this->_depth;
     }
 
-    public function getInlineStyleAt(int $offset) : array
+    public function getInlineStyleAt(int $offset)
     {
         return $this->_characterList[$offset]->getStyle();
     }
@@ -90,7 +90,7 @@ class ContentBlock
         return $this->_characterList[$offset]->getEntity();
     }
 
-    public function getData() : array
+    public function getData()
     {
         return $this->_data;
     }

@@ -16,7 +16,7 @@ class EntityRange
     /** @var int */
     private $_length;
 
-    public function __construct(int $key, int $offset, int $length)
+    public function __construct($key, $offset, $length)
     {
         $this->_key = $key;
         $this->_offset = $offset;

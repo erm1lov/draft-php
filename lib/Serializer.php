@@ -15,7 +15,7 @@ class Serializer
      * @param int $options json_encode options bit mask
      * @return string
      */
-    public static function serialize(ContentState $contentState, int $options = 0): string
+    public static function serialize(ContentState $contentState, $options = 0)
     {
         $serializer = new self();
 
@@ -28,7 +28,7 @@ class Serializer
      * @param ContentState $contentState
      * @return \stdClass|\Prezly\DraftPhp\Model\RawDraftContentState
      */
-    public function serializeRaw(ContentState $contentState): \stdClass
+    public function serializeRaw(ContentState $contentState)
     {
         /**
          * @var $rawContentState \Prezly\DraftPhp\Model\RawDraftContentState
@@ -81,7 +81,7 @@ class Serializer
      * @param \Prezly\DraftPhp\Model\ContentBlock $block
      * @return \Prezly\DraftPhp\Model\RawDraftInlineStyleRange[]
      */
-    private function serializeInlineStyleRanges(ContentBlock $block): array
+    private function serializeInlineStyleRanges(ContentBlock $block)
     {
         /** @var \Prezly\DraftPhp\Model\RawDraftInlineStyleRange[] $ranges Plain list of ranges */
         $ranges = [];
@@ -131,7 +131,7 @@ class Serializer
      * @param \Prezly\DraftPhp\Model\ContentBlock $block
      * @return \Prezly\DraftPhp\Model\RawDraftEntityRange[]
      */
-    private function serializeEntityRanges(ContentBlock $block): array
+    private function serializeEntityRanges(ContentBlock $block)
     {
         /** @var \Prezly\DraftPhp\Model\RawDraftEntityRange[] $ranges Plain list of ranges */
         $ranges = [];
@@ -182,7 +182,7 @@ class Serializer
      * @param \Prezly\DraftPhp\Model\ContentBlock $block
      * @return string[]
      */
-    private function getUsedEntityKeys(ContentBlock $block): array
+    private function getUsedEntityKeys(ContentBlock $block)
     {
         $isEntityUsed = [];
         foreach ($block->getCharacterList() as $char) {

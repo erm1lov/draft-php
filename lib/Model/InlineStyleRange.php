@@ -16,7 +16,7 @@ class InlineStyleRange
     /** @var int */
     private $_length;
 
-    public function __construct(string $style, int $offset, int $length)
+    public function __construct($style, $offset, $length)
     {
         $this->_style = $style;
         $this->_offset = $offset;

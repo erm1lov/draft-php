@@ -31,7 +31,7 @@ class Converter
      * @param string $json
      * @return \Prezly\DraftPhp\Model\ContentState
      */
-    public static function convertFromJson(string $json) : ContentState
+    public static function convertFromJson($json)
     {
         $data = json_decode($json);
 
@@ -51,7 +51,7 @@ class Converter
      * @param \stdClass|RawDraftContentState $raw
      * @return ContentState
      */
-    public static function convertFromRaw($raw) : ContentState
+    public static function convertFromRaw($raw)
     {
         if (! isset($raw->blocks)) {
             throw new InvalidArgumentException("Invalid JSON given: 'blocks' property is missing");
@@ -78,7 +78,7 @@ class Converter
      * @param \stdClass|RawDraftEntity $rawEntity
      * @return EntityInstance
      */
-    private static function convertEntityFromRaw($rawEntity) : EntityInstance
+    private static function convertEntityFromRaw($rawEntity)
     {
         $entity = new EntityInstance(
             $rawEntity->type,
@@ -93,7 +93,7 @@ class Converter
      * @param \stdClass|RawDraftContentBlock $rawBlock
      * @return ContentBlock
      */
-    private static function convertBlockFromRaw($rawBlock) : ContentBlock
+    private static function convertBlockFromRaw($rawBlock)
     {
         $characterList = [];
         for ($i = 0; $i < mb_strlen($rawBlock->text); $i++) {
@@ -112,13 +112,15 @@ class Converter
             $characterList[] = CharacterMetadata::create($style, $entity);
         }
 
+        $data = (isset($rawBlock->data)) ? json_decode(json_encode($rawBlock->data), true) : [];
+        
         $block = new ContentBlock(
             $rawBlock->key,
             $rawBlock->type,
             $rawBlock->text,
             $characterList,
             $rawBlock->depth,
-            json_decode(json_encode($rawBlock->data), true) ?: []
+            $data
         );
 
         return $block;

@@ -23,7 +23,7 @@ class CharacterMetadata
      * @param string|null $entity
      * @return static
      */
-    public static function create(array $style, string $entity = null)
+    public static function create(array $style, $entity = null)
     {
         foreach ($style as $s) {
             if (! is_string($s)) {
@@ -42,7 +42,7 @@ class CharacterMetadata
         return self::$pool[$fingerprint];
     }
 
-    private function __construct(array $style, string $entity = null)
+    private function __construct(array $style, $entity = null)
     {
         $this->_style = $style;
         $this->_entity = $entity;
@@ -51,12 +51,12 @@ class CharacterMetadata
     /**
      * @return string[]
      */
-    public function getStyle() : array
+    public function getStyle()
     {
         return $this->_style;
     }
 
-    public function hasStyle(string $style) : bool
+    public function hasStyle(string $style)
     {
         return in_array($style, $this->_style);
     }

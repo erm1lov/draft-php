@@ -23,8 +23,7 @@ class EntityInstance
     private $_mutability;
     /** @var array|null */
     private $_data;
-
-    public function __construct(string $type, string $mutability, array $data = [])
+    public function __construct($type, $mutability, array $data = [])
     {
         $this->_type = $type;
         $this->_mutability = $mutability;
