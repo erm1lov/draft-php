@@ -59,7 +59,7 @@ class ContentState implements JsonSerializable
 
     public function getEntity($key)
     {
-        return $this->entityMap[$key];
+        return (isset($this->entityMap[$key])) ? $this->entityMap[$key] : '';
     }
 
     public function isEmpty()
